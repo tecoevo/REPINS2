@@ -1,60 +1,73 @@
 # REPINS2
 
-One Paragraph of project description goes here
+The Julia code presented in this repository solves numerically a system of REPINS and RAYTS.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+THe bacterial population can be split up into three compartments
+
+ - 0 RAYTS
+ - 1 RAYT
+ - 2 RAYTS
+
+The total number of REPINS possible within each state are given by the parameter combinations delta and gamma.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+To run the code all that is required is to install Julia.
+Plottign can be done optionally in any other program of user choice.
+We provide a Mathematica file which does the plotting using the provided csv files.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+A step by step guide for installing and running Julia can be found 
 
 ```
-Give the example
+https://julialang.org
 ```
 
-And repeat
+## Running the code
 
-```
-until finished
-```
+There are two basic initial conditions which are explored for different parameter settings.
 
-End with an example of getting some data out of the system or using it for a little demo
+- One where the initial number of REPINS in close to extinction
+- another where the initial number of REPINS is close to fixation
 
-## Running the tests
 
-Explain how to run the automated tests for this system
 
-### Break down into end to end tests
+### Calculations without RAYT states
 
-Explain what these tests test and why
+As a null model we begin with a bacterial population without different RAYT states.
+Hence \epsilon = 0 and the population stays in 1 RAYT state.
 
-```
-Give an example
-```
+#### Without benefits
 
-### And coding style tests
+Without benefits \alpha = 0 we can recover the simulation outcomes:
 
-Explain what these tests test and why
+- Raytssol2_withoutbenefits.csv
+- Raytssol3_withoutbenefits.csv
 
-```
-Give an example
-```
 
-## Deployment
 
-Add additional notes about how to deploy this on a live system
+#### Adding benefits
+
+By setting \alpha = 10^{-2} we incorporate the effects of benefits into the REPIN systems.
+This leads us to 
+
+- Raytssol2_withoutbenefits.csv
+- Raytssol3_withoutbenefits.csv
+
+
+### Calculations with RAYT states
+
+Together with benefits we include multiple RAYT states when \epsilon is positive (\epsilon = 0.2)
+
+The bacterial population can now spill over into the 0 RAYT and 2 RAYT states.
+
+The results are given in
+
+- Raytssol2_withRAYTS.csv
+- Raytssol3_withRAYTS.csv
 
 ## Built With
 
@@ -63,19 +76,12 @@ Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please feel free to fork the project for extensions and any queries are welcome
 
 ## Authors
 
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/tecoevo/REPINS2/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+This project as [LICENSE.md](LICENSE.md)
