@@ -2,7 +2,12 @@ library(ggtree)
 library(ggplot2)
 library(colorspace)
 library(ape)
+root=c("1_ASM993143v1_genomic","1_ASM301829v1_genomic")
 delete=c("1_Unitig_genomic","1_ASM90049747v1_genomic")
+tree=read.tree("ecoli_trans.nwk")
+tree=drop.tip(tree,delete)
+tree=root(tree,root)
+tree=multi2di(tree)
 theme=theme(axis.line.x = element_line(colour = "black"),legend.key = element_rect(fill = "white"),axis.line.y = element_line(colour = "black"),panel.grid.major = element_blank(),panel.grid.minor = element_blank(),panel.border = element_blank(),panel.background = element_blank(),legend.justification = c(0, 1), legend.position = c(0.1, 1),legend.title=element_blank(),legend.text = element_text(hjust=0),panel.spacing=unit(2,"lines"))
 folder="./"
 tIS5=read.delim(paste0(folder,"presAbs_0_IS5.txt"))
@@ -11,6 +16,7 @@ tIS5=tIS5[!tIS5[,1]%in%delete,]
 t=read.delim(paste0(folder,"presAbs_0_yafM.txt"))
 t=t[!t[,1]%in%delete,]
 plotAll=function(t,tIS5,tree,name){
+  print(tree)
   t$IS5=0
   tIS5$IS5=2
   tIS5[,3]=tIS5[,2] #copy number of IS5 copies into REPIN space
