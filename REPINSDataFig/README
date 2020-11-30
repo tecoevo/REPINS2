@@ -1,3 +1,5 @@
 The R file plotEcoliREPINDistribution.R can be run with Rscript to generate the figure REPIN_IS5_distribution.pdf. 
 
 The underlying data was generated using the de-replicated E. coli genome files with the RAREFAN webserver (rarefan.evolbio.mpg.de) as well as the yafM_Ecoli.faa and the IS5.faa files as input.
+
+Run "perl downloadEcoliData.pl data.txt" to Download the E. coli sequence data from NCBI.
