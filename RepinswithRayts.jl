@@ -8,7 +8,7 @@ using CSV
 λ = 10^-2
 α = 10^-2#0.0
 ω = 0.985
-ϵ = 0.2
+ϵ = 0.0
 
 kmax = ceil(Int,(1/(δ * γ)))
 println(kmax)
@@ -57,7 +57,7 @@ end
 
 function lorenz!(du,u,p,t)
     for i in 1:kmax
-        du[i,1] = F(i,u,1) + ϵ*u[i,2]
+        du[i,1] = F(i,u,1) + ϵ*(u[i,2]-u[i,1])
         du[i,2] = F(i,u,2) + ϵ*(u[i,1]+u[i,3]) - 2*ϵ*u[i,2]
         du[i,3] = F(i,u,3) + ϵ*u[i,2] - ϵ*u[i,3]
     end
@@ -65,26 +65,6 @@ end
 
 
 ## Solving for the first initial condition
-# A = zeros(kmax,lmax)
-# for i in 100:200
-#          A[i,2] = 0.01
-#        end
-# #A[trunc(Int,(0.25* kmax)),2]= 0.8
-# u0 = A
-# tspan = (0.0,1000.0)
-# prob = ODEProblem(lorenz!,u0,tspan)
-# sol = solve(prob,Tsit5(), abstol=1e-10, dense=false,saveat=10)
-#
-# pl = plot(sol,vars=[(0,1),(0,trunc(Int,(0.25* kmax))),(0,kmax+1),(0,kmax+2),(0,kmax+trunc(Int,(0.25* kmax))),(0,2*kmax+1),(0,2*kmax+trunc(Int,(0.25* kmax)))],title = "Bacterial density when starting close to no REPINS", label = ["No Rayts Starting at k = 0" "No rayts Starting at 0.25*kmax" "One Rayts Starting at k = 0" "One rayts Starting at 0.25*kmax" "Two Rayts Starting at k = 0" "Two rayts Starting at 0.25*kmax"], lw = 3)
-#
-# plot(sol,vars=collect(kmax+1:2*kmax))
-#
-# savefig(pl,"fig1fromRayts.pdf")
-#
-# CSV.write("Raytssol1.csv",DataFrame(sol))
-
-
-## Solving for the second initial condition
 A = zeros(kmax,3)
 for i in trunc(Int,(0.75* kmax)):kmax
          A[i,2] = 0.01
@@ -103,7 +83,7 @@ CSV.write("Raytssol2_withRAYTS.csv",DataFrame(sol2))
 #CSV.write("Raytssol2_withoutbenefits.csv",DataFrame(sol2))
 
 
-## Solving for the third initial condition
+## Solving for the second initial condition
 A = zeros(kmax,3)
 for i in 1:trunc(Int,(0.25* kmax))
          A[i,2] = 0.01
