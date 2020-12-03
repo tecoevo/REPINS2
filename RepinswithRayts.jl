@@ -78,8 +78,8 @@ sol2 = solve(prob,Tsit5(), abstol=1e-10, dense=false,saveat=10)
 #
 # savefig(pl2,"fig2fromRayts.pdf")
 
-CSV.write("Raytssol2_withRAYTS.csv",DataFrame(sol2))
-#CSV.write("Raytssol2_withbenefits.csv",DataFrame(sol2))
+#CSV.write("Raytssol2_withRAYTS.csv",DataFrame(sol2))
+CSV.write("Raytssol2_withbenefits.csv",DataFrame(sol2))
 #CSV.write("Raytssol2_withoutbenefits.csv",DataFrame(sol2))
 
 
@@ -98,6 +98,6 @@ sol3 = solve(prob,Tsit5(), abstol=1e-10, dense=false,saveat=10)
 # savefig(pl3,"fig3fromRayts.pdf")
 
 
-CSV.write("Raytssol3_withRAYTS.csv",DataFrame(sol3))
-#CSV.write("Raytssol3_withbenefits.csv",DataFrame(sol3))
+#CSV.write("Raytssol3_withRAYTS.csv",DataFrame(sol3))
+CSV.write("Raytssol3_withbenefits.csv",DataFrame(sol3))
 #CSV.write("Raytssol3_withoutbenefits.csv",DataFrame(sol3))
