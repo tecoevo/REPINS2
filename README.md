@@ -1,8 +1,12 @@
 # REPINS2
 
-The Julia code presented in this repository solves numerically a system of REPINS and RAYTS.
+This repository contains the model as well as the data for the REPINS2 project.
+For the details about the data consult the subfolder REPINSDataFig and the README therein.
 
-## Getting Started
+Below follows a description and explanation of the the Julia code presented in this repository.
+We numerically solve a system of REPINS and RAYTS.
+
+## Getting Started with the model
 
 THe bacterial population can be split up into three compartments
 
@@ -33,6 +37,19 @@ There are two basic initial conditions which are explored for different paramete
 - One where the initial number of REPINS in close to extinction
 - another where the initial number of REPINS is close to fixation
 
+The basic parameters (explained further in the manuscript) are 
+
+δ = 10^-3
+
+γ = 0.95
+
+λ = 10^-2
+
+#Benefit parameters
+
+α = 10^-2#0.0
+
+ω = 0.985
 
 
 ### Calculations without RAYT states
